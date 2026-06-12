@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Révisions ICT</title>
+  <script>
+    (() => {
+      try {
+        const savedTheme = localStorage.getItem("revision-powershell-122-theme");
+        const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        document.documentElement.dataset.theme = savedTheme === "dark" || savedTheme === "light" ? savedTheme : systemTheme;
+      } catch {
+        document.documentElement.dataset.theme = "light";
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#app">Aller au contenu</a>
+  <div class="app-shell">
+    <div class="sidebar-backdrop" id="sidebarBackdrop" hidden></div>
+    <aside class="sidebar" id="sidebarPanel" aria-label="Navigation des modules">
+      <div class="brand">
+        <div class="brand-mark" id="sidebarTrackCode" aria-hidden="true">122</div>
+        <div class="brand-copy">
+          <p>REVICTJB</p>
+          <strong id="sidebarTrackName">PowerShell S2</strong>
+        </div>
+        <button class="sidebar-toggle" id="sidebarToggle" type="button" aria-expanded="true" aria-controls="sidebarPanel" title="Réduire la navigation">
+          <span class="sidebar-toggle-icon" aria-hidden="true"></span>
+          <span class="sr-only">Réduire la navigation</span>
+        </button>
+      </div>
+
+      <div class="overall-panel">
+        <div class="panel-row">
+          <span>Progression</span>
+          <strong id="overallPercent">0%</strong>
+        </div>
+        <div class="progress-track" aria-hidden="true">
+          <span id="overallBar"></span>
+        </div>
+      </div>
+
+      <nav class="module-nav" id="moduleNav" aria-label="Modules"></nav>
+    </aside>
+
+    <main class="workspace">
+      <header class="topbar">
+        <div class="course-heading">
+          <button class="sidebar-open-button" id="sidebarOpenBtn" type="button" aria-expanded="false" aria-controls="sidebarPanel" title="Ouvrir les modules">
+            <span class="icon icon-menu" aria-hidden="true"></span>
+            <span>Modules</span>
+          </button>
+          <span class="moodle-logo">REVICTJB</span>
+          <div>
+            <p class="eyebrow" id="courseEyebrow">Automatiser des procédures à l'aide de scripts</p>
+            <h1 id="pageTitle">Tableau de révision</h1>
+          </div>
+        </div>
+        <div class="top-actions">
+          <div class="top-menu" id="topMenu">
+            <button class="top-menu-trigger" id="topMenuBtn" type="button" aria-expanded="false" aria-controls="topMenuPanel" aria-label="Ouvrir le menu de navigation">
+              <span class="top-menu-icon icon icon-menu" aria-hidden="true"></span>
+              <span>
+                <small>Menu</small>
+                <strong id="topMenuLabel">Navigation</strong>
+              </span>
+            </button>
+            <div class="top-menu-panel" id="topMenuPanel" hidden>
+              <section class="top-menu-section">
+                <p class="top-menu-title">Parcours</p>
+                <details class="track-menu" id="trackMenu">
+                  <summary class="track-menu-trigger">
+                    <span class="track-menu-icon icon icon-grid" aria-hidden="true"></span>
+                    <span>
+                      <small>Actuel</small>
+                      <strong id="currentTrackLabel">ICT</strong>
+                    </span>
+                  </summary>
+                  <div class="track-menu-panel" aria-label="Choisir un parcours">
+                    <button class="track-menu-item" type="button" data-track="122">
+                      <span>122</span>
+                      <strong>Shell 122</strong>
+                    </button>
+                    <button class="track-menu-item" type="button" data-track="106">
+                      <span>106</span>
+                      <strong>SQL 106</strong>
+                    </button>
+                    <button class="track-menu-item" type="button" data-track="231">
+                      <span>231</span>
+                      <strong>Sécu 231</strong>
+                    </button>
+                  </div>
+                </details>
+              </section>
+
+              <section class="top-menu-section">
+                <p class="top-menu-title">Recherche</p>
+                <label class="search-box">
+                  <span class="icon icon-search" aria-hidden="true"></span>
+                  <input id="searchInput" name="search" type="search" aria-label="Rechercher une notion, une commande ou un thème" placeholder="Chercher une notion, commande, thème...">
+                </label>
+              </section>
+
+              <section class="top-menu-section">
+                <p class="top-menu-title">Navigation</p>
+                <div class="action-group nav-actions" aria-label="Navigation">
+                  <button class="tool-button icon-button" id="backBtn" type="button" title="Retourner à l'écran précédent" disabled>
+                    <span class="icon icon-back" aria-hidden="true"></span>
+                    <span>Retour</span>
+                  </button>
+                  <button class="tool-button icon-button" id="homeBtn" type="button" title="Retourner à l'accueil">
+                    <span class="icon icon-home" aria-hidden="true"></span>
+                    <span>Accueil</span>
+                  </button>
+                  <button class="tool-button icon-button" id="dashboardBtn" type="button" title="Tableau de bord">
+                    <span class="icon icon-grid" aria-hidden="true"></span>
+                    <span>Tableau</span>
+                  </button>
+                </div>
+              </section>
+
+              <section class="top-menu-section">
+                <p class="top-menu-title">Actions</p>
+                <div class="action-group task-actions" aria-label="Actions">
+                  <button class="tool-button primary" id="examBtn" type="button" title="Lancer un examen blanc">
+                    <span class="icon icon-check" aria-hidden="true"></span>
+                    <span>Examen blanc</span>
+                  </button>
+                  <button class="tool-button theme-toggle" id="themeBtn" type="button" title="Passer en mode nuit" aria-pressed="false">
+                    <span class="theme-icon is-moon" id="themeIcon" aria-hidden="true"></span>
+                    <span id="themeLabel">Nuit</span>
+                  </button>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="mobile-module-picker">
+        <label for="moduleSelect">Module</label>
+        <select id="moduleSelect" name="module"></select>
+      </div>
+
+      <section id="app" class="content" aria-live="polite"></section>
+    </main>
+  </div>
+</body>
+</html>
